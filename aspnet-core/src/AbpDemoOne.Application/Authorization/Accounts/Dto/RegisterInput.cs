@@ -9,14 +9,23 @@ namespace AbpDemoOne.Authorization.Accounts.Dto
 {
     public class RegisterInput : IValidatableObject
     {
+        /// <summary>
+        /// 名
+        /// </summary>
         [Required]
         [StringLength(AbpUserBase.MaxNameLength)]
         public string Name { get; set; }
 
+        /// <summary>
+        /// 姓
+        /// </summary>
         [Required]
         [StringLength(AbpUserBase.MaxSurnameLength)]
         public string Surname { get; set; }
 
+        /// <summary>
+        /// 用户名
+        /// </summary>
         [Required]
         [StringLength(AbpUserBase.MaxUserNameLength)]
         public string UserName { get; set; }

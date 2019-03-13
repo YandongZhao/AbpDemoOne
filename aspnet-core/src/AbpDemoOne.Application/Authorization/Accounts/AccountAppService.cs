@@ -19,6 +19,15 @@ namespace AbpDemoOne.Authorization.Accounts
             _userRegistrationManager = userRegistrationManager;
         }
 
+        /// <summary>
+        /// 是否启用租户
+        /// </summary>
+        /// <remarks>
+        /// 例子：
+        /// IsTenantAvailable
+        /// </remarks>
+        /// <param name="input">是否有效租户</param>
+        /// <returns> IsTenantAvailableOutput  这是一个返回值类型</returns>
         public async Task<IsTenantAvailableOutput> IsTenantAvailable(IsTenantAvailableInput input)
         {
             var tenant = await TenantManager.FindByTenancyNameAsync(input.TenancyName);
@@ -35,6 +44,11 @@ namespace AbpDemoOne.Authorization.Accounts
             return new IsTenantAvailableOutput(TenantAvailabilityState.Available, tenant.Id);
         }
 
+        /// <summary>
+        /// 注册账户
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public async Task<RegisterOutput> Register(RegisterInput input)
         {
             var user = await _userRegistrationManager.RegisterAsync(

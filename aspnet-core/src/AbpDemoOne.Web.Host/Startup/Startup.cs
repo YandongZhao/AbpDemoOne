@@ -16,6 +16,7 @@ using AbpDemoOne.Configuration;
 using AbpDemoOne.Identity;
 
 using Abp.AspNetCore.SignalR.Hubs;
+using System.IO;
 
 namespace AbpDemoOne.Web.Host.Startup
 {
@@ -65,7 +66,7 @@ namespace AbpDemoOne.Web.Host.Startup
             {
                 options.SwaggerDoc("v1", new Info { Title = "AbpDemoOne API", Version = "v1" });
                 options.DocInclusionPredicate((docName, description) => true);
-
+                
                 // Define the BearerAuth scheme that's in use
                 options.AddSecurityDefinition("bearerAuth", new ApiKeyScheme()
                 {
@@ -74,7 +75,13 @@ namespace AbpDemoOne.Web.Host.Startup
                     In = "header",
                     Type = "apiKey"
                 });
+                options.CustomSchemaIds(type => type.FullName);
+                //var remark = "..//XML//AbpDemo.Application.xml";
+                options.IncludeXmlComments(GetXmlCommentsPath("AbpDemoOne.Core"));
+                options.IncludeXmlComments(GetXmlCommentsPath("AbpDemoOne.Application"));
+                options.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
             });
+            
 
             // Configure Abp and Dependency Injection
             return services.AddAbp<AbpDemoOneWebHostModule>(
@@ -122,7 +129,16 @@ namespace AbpDemoOne.Web.Host.Startup
                 options.SwaggerEndpoint(_appConfiguration["App:ServerRootAddress"].EnsureEndsWith('/') + "swagger/v1/swagger.json", "AbpDemoOne API V1");
                 options.IndexStream = () => Assembly.GetExecutingAssembly()
                     .GetManifestResourceStream("AbpDemoOne.Web.Host.wwwroot.swagger.ui.index.html");
+               // options.InjectOnCompleteJavaScript("/swagger/ui/zh_CN.js"); // 加载中文包
             }); // URL: /swagger
+            
+        }
+
+        private static string GetXmlCommentsPath(string subName)
+        {
+            var basePath = System.AppDomain.CurrentDomain.BaseDirectory;
+            var filePath = basePath + subName + ".xml";
+            return filePath;
         }
     }
 }
