@@ -1,0 +1,9 @@
+E:\Study\AbpDemoOne\4.6.0\aspnet-core\src\AbpDemoOne.Core\bin\Debug\netcoreapp2.2\AbpDemoOne.Core.deps.json
+E:\Study\AbpDemoOne\4.6.0\aspnet-core\src\AbpDemoOne.Core\bin\Debug\netcoreapp2.2\AbpDemoOne.Core.dll
+E:\Study\AbpDemoOne\4.6.0\aspnet-core\src\AbpDemoOne.Core\bin\Debug\netcoreapp2.2\AbpDemoOne.Core.pdb
+E:\Study\AbpDemoOne\4.6.0\aspnet-core\src\AbpDemoOne.Core\obj\Debug\netcoreapp2.2\AbpDemoOne.Core.csprojAssemblyReference.cache
+E:\Study\AbpDemoOne\4.6.0\aspnet-core\src\AbpDemoOne.Core\obj\Debug\netcoreapp2.2\AbpDemoOne.Core.csproj.CoreCompileInputs.cache
+E:\Study\AbpDemoOne\4.6.0\aspnet-core\src\AbpDemoOne.Core\obj\Debug\netcoreapp2.2\AbpDemoOne.Core.AssemblyInfoInputs.cache
+E:\Study\AbpDemoOne\4.6.0\aspnet-core\src\AbpDemoOne.Core\obj\Debug\netcoreapp2.2\AbpDemoOne.Core.AssemblyInfo.cs
+E:\Study\AbpDemoOne\4.6.0\aspnet-core\src\AbpDemoOne.Core\obj\Debug\netcoreapp2.2\AbpDemoOne.Core.dll
+E:\Study\AbpDemoOne\4.6.0\aspnet-core\src\AbpDemoOne.Core\obj\Debug\netcoreapp2.2\AbpDemoOne.Core.pdb

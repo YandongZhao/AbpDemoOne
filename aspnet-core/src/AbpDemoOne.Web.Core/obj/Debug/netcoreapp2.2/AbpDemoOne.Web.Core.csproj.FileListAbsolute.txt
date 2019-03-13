@@ -1,0 +1,17 @@
+E:\Study\AbpDemoOne\4.6.0\aspnet-core\src\AbpDemoOne.Web.Core\bin\Debug\netcoreapp2.2\AbpDemoOne.Web.Core.deps.json
+E:\Study\AbpDemoOne\4.6.0\aspnet-core\src\AbpDemoOne.Web.Core\bin\Debug\netcoreapp2.2\AbpDemoOne.Web.Core.dll
+E:\Study\AbpDemoOne\4.6.0\aspnet-core\src\AbpDemoOne.Web.Core\bin\Debug\netcoreapp2.2\AbpDemoOne.Web.Core.pdb
+E:\Study\AbpDemoOne\4.6.0\aspnet-core\src\AbpDemoOne.Web.Core\bin\Debug\netcoreapp2.2\AbpDemoOne.Application.dll
+E:\Study\AbpDemoOne\4.6.0\aspnet-core\src\AbpDemoOne.Web.Core\bin\Debug\netcoreapp2.2\AbpDemoOne.Core.dll
+E:\Study\AbpDemoOne\4.6.0\aspnet-core\src\AbpDemoOne.Web.Core\bin\Debug\netcoreapp2.2\AbpDemoOne.EntityFrameworkCore.dll
+E:\Study\AbpDemoOne\4.6.0\aspnet-core\src\AbpDemoOne.Web.Core\bin\Debug\netcoreapp2.2\AbpDemoOne.Application.pdb
+E:\Study\AbpDemoOne\4.6.0\aspnet-core\src\AbpDemoOne.Web.Core\bin\Debug\netcoreapp2.2\AbpDemoOne.EntityFrameworkCore.pdb
+E:\Study\AbpDemoOne\4.6.0\aspnet-core\src\AbpDemoOne.Web.Core\bin\Debug\netcoreapp2.2\AbpDemoOne.EntityFrameworkCore.dll.config
+E:\Study\AbpDemoOne\4.6.0\aspnet-core\src\AbpDemoOne.Web.Core\bin\Debug\netcoreapp2.2\AbpDemoOne.Core.pdb
+E:\Study\AbpDemoOne\4.6.0\aspnet-core\src\AbpDemoOne.Web.Core\obj\Debug\netcoreapp2.2\AbpDemoOne.Web.Core.csprojAssemblyReference.cache
+E:\Study\AbpDemoOne\4.6.0\aspnet-core\src\AbpDemoOne.Web.Core\obj\Debug\netcoreapp2.2\AbpDemoOne.Web.Core.csproj.CoreCompileInputs.cache
+E:\Study\AbpDemoOne\4.6.0\aspnet-core\src\AbpDemoOne.Web.Core\obj\Debug\netcoreapp2.2\AbpDemoOne.Web.Core.AssemblyInfoInputs.cache
+E:\Study\AbpDemoOne\4.6.0\aspnet-core\src\AbpDemoOne.Web.Core\obj\Debug\netcoreapp2.2\AbpDemoOne.Web.Core.AssemblyInfo.cs
+E:\Study\AbpDemoOne\4.6.0\aspnet-core\src\AbpDemoOne.Web.Core\obj\Debug\netcoreapp2.2\AbpDemoOne.Web.Core.csproj.CopyComplete
+E:\Study\AbpDemoOne\4.6.0\aspnet-core\src\AbpDemoOne.Web.Core\obj\Debug\netcoreapp2.2\AbpDemoOne.Web.Core.dll
+E:\Study\AbpDemoOne\4.6.0\aspnet-core\src\AbpDemoOne.Web.Core\obj\Debug\netcoreapp2.2\AbpDemoOne.Web.Core.pdb
