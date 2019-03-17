@@ -5,20 +5,30 @@ using Abp.Extensions;
 using Abp.Notifications;
 using Abp.Timing;
 using AbpDemoOne.Controllers;
+using Castle.Core.Logging;
 
 namespace AbpDemoOne.Web.Host.Controllers
 {
     public class HomeController : AbpDemoOneControllerBase
     {
         private readonly INotificationPublisher _notificationPublisher;
+        public  ILogger _logger { get; set; }
 
         public HomeController(INotificationPublisher notificationPublisher)
         {
             _notificationPublisher = notificationPublisher;
+            _logger = NullLogger.Instance;
         }
 
         public IActionResult Index()
         {
+            _logger.Debug("这是一个Debug");
+            _logger.Info("这是一个Info");
+            _logger.Error("这是一个Error");
+            _logger.Fatal("这是一个Fatal");
+            _logger.Warn("这是一个Warn");
+            _logger.InfoFormat("日志记录");
+
             return Redirect("/swagger");
         }
 
