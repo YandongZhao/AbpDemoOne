@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -17,13 +20,19 @@ using AbpDemoOne.Authorization;
 using AbpDemoOne.Authorization.Accounts;
 using AbpDemoOne.Authorization.Roles;
 using AbpDemoOne.Authorization.Users;
+using AbpDemoOne.EntityFrameworkCore.Repositories;
 using AbpDemoOne.Roles.Dto;
+using AbpDemoOne.SQLRepositories;
 using AbpDemoOne.Users.Dto;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace AbpDemoOne.Users
 {
+    /// <summary>
+    /// 用户服务层
+    /// </summary>
     [AbpAuthorize(PermissionNames.Pages_Users)]
     public class UserAppService : AsyncCrudAppService<User, UserDto, long, PagedUserResultRequestDto, CreateUserDto, UserDto>, IUserAppService
     {
@@ -33,7 +42,18 @@ namespace AbpDemoOne.Users
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IAbpSession _abpSession;
         private readonly LogInManager _logInManager;
+        private readonly ISqlExecuter _sqlRepository;
 
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="repository"></param>
+        /// <param name="userManager"></param>
+        /// <param name="roleManager"></param>
+        /// <param name="roleRepository"></param>
+        /// <param name="passwordHasher"></param>
+        /// <param name="abpSession"></param>
+        /// <param name="logInManager"></param>
         public UserAppService(
             IRepository<User, long> repository,
             UserManager userManager,
@@ -41,7 +61,8 @@ namespace AbpDemoOne.Users
             IRepository<Role> roleRepository,
             IPasswordHasher<User> passwordHasher,
             IAbpSession abpSession,
-            LogInManager logInManager)
+            LogInManager logInManager,
+            ISqlExecuter sqlRepository)
             : base(repository)
         {
             _userManager = userManager;
@@ -50,8 +71,14 @@ namespace AbpDemoOne.Users
             _passwordHasher = passwordHasher;
             _abpSession = abpSession;
             _logInManager = logInManager;
+            _sqlRepository = sqlRepository;
         }
 
+        /// <summary>
+        /// 添加用户
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public override async Task<UserDto> Create(CreateUserDto input)
         {
             CheckCreatePermission();
@@ -75,6 +102,11 @@ namespace AbpDemoOne.Users
             return MapToEntityDto(user);
         }
 
+        /// <summary>
+        /// 更新用户
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public override async Task<UserDto> Update(UserDto input)
         {
             CheckUpdatePermission();
@@ -93,18 +125,32 @@ namespace AbpDemoOne.Users
             return await Get(input);
         }
 
+        /// <summary>
+        /// 删除用户
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public override async Task Delete(EntityDto<long> input)
         {
             var user = await _userManager.GetUserByIdAsync(input.Id);
             await _userManager.DeleteAsync(user);
         }
 
+        /// <summary>
+        /// 获取用户角色列表
+        /// </summary>
+        /// <returns></returns>
         public async Task<ListResultDto<RoleDto>> GetRoles()
         {
             var roles = await _roleRepository.GetAllListAsync();
             return new ListResultDto<RoleDto>(ObjectMapper.Map<List<RoleDto>>(roles));
         }
 
+        /// <summary>
+        /// 改变语言
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public async Task ChangeLanguage(ChangeUserLanguageDto input)
         {
             await SettingManager.ChangeSettingForUserAsync(
@@ -112,6 +158,29 @@ namespace AbpDemoOne.Users
                 LocalizationSettingNames.DefaultLanguage,
                 input.LanguageName
             );
+        }
+        
+        /// <summary>
+        /// 获取List
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<UserDto>> getUserDtoList()
+        {
+            try
+            {
+                var param = new
+                {
+                    tenantId = 1
+                };
+                var restult = _sqlRepository.Query<UserDto>("select * from dbo.AbpUsers where TenantId=@tenantId", param);
+                var list = ObjectMapper.Map<List<UserDto>>(restult);
+                return list;
+            }
+            catch (System.Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         protected override User MapToEntity(CreateUserDto createInput)

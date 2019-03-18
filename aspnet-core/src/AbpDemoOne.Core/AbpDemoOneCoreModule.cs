@@ -38,11 +38,14 @@ namespace AbpDemoOne
         public override void Initialize()
         {
             IocManager.RegisterAssemblyByConvention(typeof(AbpDemoOneCoreModule).GetAssembly());
+            
+            //var sqlExecuter = IocManager.Instance.Resolve<ISqlExecuter>();
         }
 
         public override void PostInitialize()
         {
             IocManager.Resolve<AppTimes>().StartupTime = Clock.Now;
+            
         }
     }
 }
