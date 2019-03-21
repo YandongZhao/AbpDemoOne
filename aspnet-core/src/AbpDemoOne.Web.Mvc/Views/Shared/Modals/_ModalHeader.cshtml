@@ -1,8 +1,14 @@
 ﻿@using AbpDemoOne.Web.Models.Common.Modals
 @model ModalHeaderViewModel
 <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+    <h5 class="modal-title" id="exampleModalLabel">
+        @Html.Raw(Model.Title)
+    </h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    @*<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
     <h4 class="modal-title">
-        <span>@Html.Raw(Model.Title)</span>
-    </h4>
+        <span></span>
+    </h4>*@
 </div>

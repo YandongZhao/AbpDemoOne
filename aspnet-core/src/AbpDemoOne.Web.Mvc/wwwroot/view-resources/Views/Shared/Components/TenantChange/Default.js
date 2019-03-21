@@ -4,12 +4,16 @@
             e.preventDefault();
             $.ajax({
                 url: abp.appPath + 'Account/TenantChangeModal',
-                type: 'POST',
+                type: 'GET',
                 contentType: 'application/html',
                 success: function (content) {
                     $('#TenantChangeModal div.modal-content').html(content);
                 },
-                error: function (e) { }
+                error: function (e) {
+                    console.log(e);
+                    alert(e);
+                    
+                }
             });
         });
 })();

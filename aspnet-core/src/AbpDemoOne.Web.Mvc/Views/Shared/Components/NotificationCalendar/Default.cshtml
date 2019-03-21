@@ -1,0 +1,63 @@
+﻿@using Abp.Collections.Extensions
+@using AbpDemoOne.Web.Views.Shared.Components.NotificationCalendar
+@model NotificationCalendarViewModel
+@{
+    //TODO: Get current virtual path
+    var ApplicationPath = "/";
+}
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle no-waves-effect" id="navbar-notification-calendar" data-toggle="dropdown" data-flip="false" aria-haspopup="true" aria-expanded="false">
+        <i class="batch-icon batch-icon-calendar"></i>
+        <span class="notification-number">6</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-right dropdown-menu-md" aria-labelledby="navbar-notification-calendar">
+        <li class="media">
+            <a href="task-list.html">
+                <i class="batch-icon batch-icon-calendar batch-icon-xl d-flex mr-3"></i>
+                <div class="media-body">
+                    <h6 class="mt-0 mb-1 notification-heading">Meeting with Project Manager</h6>
+                    <div class="notification-text">
+                        Cras sit amet nibh libero
+                    </div>
+                    <span class="notification-time">Right now</span>
+                </div>
+            </a>
+        </li>
+        <li class="media">
+            <a href="task-list.html">
+                <i class="batch-icon batch-icon-calendar batch-icon-xl d-flex mr-3"></i>
+                <div class="media-body">
+                    <h6 class="mt-0 mb-1 notification-heading">Sales Call</h6>
+                    <div class="notification-text">
+                        Nibh amet cras sit libero
+                    </div>
+                    <span class="notification-time">One hour from now</span>
+                </div>
+            </a>
+        </li>
+        <li class="media">
+            <a href="task-list.html">
+                <i class="batch-icon batch-icon-calendar batch-icon-xl d-flex mr-3"></i>
+                <div class="media-body">
+                    <h6 class="mt-0 mb-1 notification-heading">Email CEO new expansion proposal</h6>
+                    <div class="notification-text">
+                        Cras sit amet nibh libero
+                    </div>
+                    <span class="notification-time">In 3 days</span>
+                </div>
+            </a>
+        </li>
+        <li class="media">
+            <a href="task-list.html">
+                <i class="batch-icon batch-icon-calendar batch-icon-xl d-flex mr-3"></i>
+                <div class="media-body">
+                    <h6 class="mt-0 mb-1 notification-heading">Team building exercise</h6>
+                    <div class="notification-text">
+                        Cras sit amet nibh libero
+                    </div>
+                    <span class="notification-time">In one week</span>
+                </div>
+            </a>
+        </li>
+    </ul>
+</li>

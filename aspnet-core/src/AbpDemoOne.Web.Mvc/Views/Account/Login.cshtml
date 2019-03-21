@@ -3,7 +3,7 @@
 @using Abp.MultiTenancy
 @model AbpDemoOne.Web.Models.Account.LoginFormViewModel
 @section Styles
-{
+    {
     <environment names="Development">
         <link rel="stylesheet" href="~/view-resources/Views/Account/Login.css" asp-append-version="true" />
     </environment>
@@ -14,16 +14,43 @@
 
 }
 @section Scripts
-{
-    <environment names="Development">
+    {
+    @*<environment names="Development">
         <script src="~/view-resources/Views/Account/Login.js" asp-append-version="true"></script>
     </environment>
 
     <environment names="Staging,Production">
         <script src="~/view-resources/Views/Account/Login.min.js" asp-append-version="true"></script>
-    </environment>
+    </environment>*@
 }
-<div class="card" id="﻿LoginArea">
+
+<form>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="keep-signed-in">
+        <label class="custom-control-label" for="keep-signed-in">Keep Me Signed In</label>
+    </div>
+    <button type="submit" class="btn btn-primary btn-gradient btn-block">
+        <i class="batch-icon batch-icon-key"></i>
+        Sign In
+    </button>
+    <hr>
+    <p class="text-center">
+        Don't Have An Account? <a href="sisu-signup.html">Sign Up here</a>
+    </p>
+</form>
+
+
+
+@*<div class="card" id="﻿LoginArea">
     <div class="body">
         <form id="LoginForm" asp-action="Login" method="post">
             <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
@@ -64,4 +91,4 @@
             }
         </form>
     </div>
-</div>
+</div>*@

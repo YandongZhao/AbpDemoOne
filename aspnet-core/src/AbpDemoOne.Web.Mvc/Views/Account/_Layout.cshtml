@@ -3,6 +3,7 @@
 @using Abp.Web.Security.AntiForgery
 @using AbpDemoOne
 @using AbpDemoOne.Web.Resources
+@using AbpDemoOne.Web.Views.Shared.Components.TenantChange
 @inject AbpDemoOne.Timing.AppTimes AppTimes
 @inject IAbpAntiForgeryManager AbpAntiForgeryManager
 @inject IMultiTenancyConfig MultiTenancyConfig
@@ -25,22 +26,39 @@
     <title>AbpDemoOne</title>
 
     <environment names="Development">
-        <link href="~/fonts/roboto/roboto.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/fonts/material-icons/materialicons.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/lib/toastr/toastr.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/lib/Waves/dist/waves.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/lib/animate.css/animate.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/css/materialize.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/css/style.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/view-resources/Views/Account/_Layout.css" rel="stylesheet" asp-append-version="true" />
+      
+        <!-- Fonts -->
+        <link  asp-append-version="true" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&amp;subset=latin-ext" rel="stylesheet">
+
+        <!-- CSS - REQUIRED - START -->
+        <!-- Batch Icons -->
+        <link asp-append-version="true" rel="stylesheet" href="~/assets/fonts/batch-icons/css/batch-icons.css">
+        <!-- Bootstrap core CSS -->
+        <link asp-append-version="true" rel="stylesheet" href="~/assets/css/bootstrap/bootstrap.min.css">
+        <!-- Material Design Bootstrap -->
+        <link asp-append-version="true" rel="stylesheet" href="~/assets/css/bootstrap/mdb.min.css">
+        <!-- Custom Scrollbar -->
+        <link  asp-append-version="true" rel="stylesheet" href="~/assets/plugins/custom-scrollbar/jquery.mCustomScrollbar.min.css">
+        <!-- Hamburger Menu -->
+        <link asp-append-version="true" rel="stylesheet" href="~/assets/css/hamburgers/hamburgers.css">
+
+        <!-- CSS - REQUIRED - END -->
+        <!-- CSS - OPTIONAL - START -->
+        <!-- Font Awesome -->
+        <link asp-append-version="true" rel="stylesheet" href="~/assets/fonts/font-awesome/css/font-awesome.min.css">
+
+        <!-- CSS - DEMO - START -->
+        <link asp-append-version="true" rel="stylesheet" href="~/assets/demo/css/ui-icons-batch-icons.css">
+        <!-- CSS - DEMO - END -->
+        <!-- CSS - OPTIONAL - END -->
+        <!-- QuillPro Styles -->
+        <link asp-append-version="true" rel="stylesheet" href="~/assets/css/quillpro/quillpro.css">
+
     </environment>
 
-    <environment names="Staging,Production">
-        <link rel="stylesheet" href="~/view-resources/Views/_Bundles/account-layout.min.css" asp-append-version="true" />
-    </environment>
+    @*<environment names="Staging,Production">
+            <link rel="stylesheet" href="~/view-resources/Views/_Bundles/account-layout.min.css" asp-append-version="true" />
+        </environment>*@
 
     <!-- View specific styles -->
     @RenderSection("styles", required: false)
@@ -52,35 +70,153 @@
     </script>
 
 </head>
-<body class="login-page">
+<body>
 
-    <div class="login-box">
-        <div class="logo">
-            <a href="javascript:void(0);">AbpDemoOne</a>
-        </div>
 
-        @if (MultiTenancyConfig.IsEnabled)
-        {
-            <div class="tenant-change-box">
-                <vc:tenant-change></vc:tenant-change>
-            </div>
-        }
-
-        @RenderBody()
-
-        <vc:account-languages></vc:account-languages>
-
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12 text-center" style="color: #e9e9e9">
-                <small>&copy; @DateTime.Now.Year AbpDemoOne. <b>Version </b> @AppVersionHelper.Version [@AppVersionHelper.ReleaseDate.ToString("yyyyMMdd")]</small>
+            <div class="right-column sisu">
+                <div class="row mx-0">
+                    <div class="col-md-7 order-md-2 signin-right-column px-5 bg-dark">
+                        <a class="signin-logo d-sm-block d-md-none" href="#">
+                            <img src="~/assets/img/logo-white.png" width="145" height="32.3" alt="QuillPro">
+                        </a>
+                        <h1 class="display-4">Sign In To get Started</h1>
+                        <p class="lead mb-5">
+                            Big data latte SpaceTeam unicorn cortado hacker physical computing paradigm.
+                        </p>
+                    </div>
+                    <div class="col-md-5 order-md-1 signin-left-column bg-white px-5">
+                        <a class="signin-logo d-sm-none d-md-block" href="#">
+                            <span style="width:145rem;height:32.2rem">AbpDemoOne</span>
+                            @*<img src="assets/img/logo-dark.png" width="145" height="32.3" alt="QuillPro">*@
+                        </a>
+
+                        @if (MultiTenancyConfig.IsEnabled)
+                        {
+                            <div class=" mb-3 tenant-change-box">
+                                @*@await Component.InvokeAsync()*@
+                                @*<span>
+                    Current tenant:<span>Not selected</span>(<a href="#" data-toggle="modal" data-target="#TenantChangeModal">Change</a>)
+                </span>*@
+                                <vc:tenant-change></vc:tenant-change>
+                                @*@await Component.InvokeAsync(typeof(TenantChangeViewComponent))*@
+                            </div>
+                        }
+
+                        @RenderBody()
+
+                        <div class=" custom-control custom-checkbox mb-3 language-switch-area">
+            <a href="/AbpLocalization/ChangeCulture?cultureName=en&amp;returnUrl=%2FAccount%2FLogin">
+                <span class="language-icon " title="English"><i class="famfamfam-flags gb"></i></span>
+            </a>
+            <a href="/AbpLocalization/ChangeCulture?cultureName=es-MX&amp;returnUrl=%2FAccount%2FLogin">
+                <span class="language-icon " title="Español México"><i class="famfamfam-flags mx"></i></span>
+            </a>
+            <a href="/AbpLocalization/ChangeCulture?cultureName=fr&amp;returnUrl=%2FAccount%2FLogin">
+                <span class="language-icon " title="Français"><i class="famfamfam-flags fr"></i></span>
+            </a>
+            <a href="/AbpLocalization/ChangeCulture?cultureName=de&amp;returnUrl=%2FAccount%2FLogin">
+                <span class="language-icon " title="German"><i class="famfamfam-flags de"></i></span>
+            </a>
+            <a href="/AbpLocalization/ChangeCulture?cultureName=it&amp;returnUrl=%2FAccount%2FLogin">
+                <span class="language-icon " title="Italiano"><i class="famfamfam-flags it"></i></span>
+            </a>
+            <a href="/AbpLocalization/ChangeCulture?cultureName=nl&amp;returnUrl=%2FAccount%2FLogin">
+                <span class="language-icon " title="Nederlands"><i class="famfamfam-flags nl"></i></span>
+            </a>
+            <a href="/AbpLocalization/ChangeCulture?cultureName=pt-BR&amp;returnUrl=%2FAccount%2FLogin">
+                <span class="language-icon " title="Português"><i class="famfamfam-flags br"></i></span>
+            </a>
+            <a href="/AbpLocalization/ChangeCulture?cultureName=tr&amp;returnUrl=%2FAccount%2FLogin">
+                <span class="language-icon " title="Türkçe"><i class="famfamfam-flags tr"></i></span>
+            </a>
+            <a href="/AbpLocalization/ChangeCulture?cultureName=ru&amp;returnUrl=%2FAccount%2FLogin">
+                <span class="language-icon " title="Русский"><i class="famfamfam-flags ru"></i></span>
+            </a>
+            <a href="/AbpLocalization/ChangeCulture?cultureName=ar&amp;returnUrl=%2FAccount%2FLogin">
+                <span class="language-icon " title="العربية"><i class="famfamfam-flags sa"></i></span>
+            </a>
+            <a href="/AbpLocalization/ChangeCulture?cultureName=ja&amp;returnUrl=%2FAccount%2FLogin">
+                <span class="language-icon " title="日本語"><i class="famfamfam-flags jp"></i></span>
+            </a>
+            <a href="/AbpLocalization/ChangeCulture?cultureName=zh-Hans&amp;returnUrl=%2FAccount%2FLogin">
+                <span class="language-icon " title="简体中文"><i class="famfamfam-flags cn"></i></span>
+            </a>
+        </div>
+                        <vc:account-languages></vc:account-languages>
+
+                        <div class="row">
+                            <div class="col-xs-12 text-center" style="color: #e9e9e9">
+                                <small>&copy; @DateTime.Now.Year AbpDemoOne. <b>Version </b> @AppVersionHelper.Version [@AppVersionHelper.ReleaseDate.ToString("yyyyMMdd")]</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
+
+    @*<div class="login-box">
+            <div class="logo">
+                <a href="javascript:void(0);">AbpDemoOne</a>
+            </div>
+
+            @if (MultiTenancyConfig.IsEnabled)
+            {
+                <div class="tenant-change-box">
+                    <vc:tenant-change></vc:tenant-change>
+                </div>
+            }
+
+            @RenderBody()
+
+            <vc:account-languages></vc:account-languages>
+
+            <div class="row">
+                <div class="col-xs-12 text-center" style="color: #e9e9e9">
+                    <small>&copy; @DateTime.Now.Year AbpDemoOne. <b>Version </b> @AppVersionHelper.Version [@AppVersionHelper.ReleaseDate.ToString("yyyyMMdd")]</small>
+                </div>
+            </div>
+
+        </div>*@
     <environment names="Development">
-        <script src="~/lib/json2/json2.js" asp-append-version="true"></script>
-        <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true"></script>
+
+        <!-- SCRIPTS - REQUIRED START -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <!-- Bootstrap core JavaScript -->
+        <!-- JQuery -->
+        <script type="text/javascript" src="~/assets/js/jquery/jquery-3.1.1.min.js" asp-append-version="true"></script>
+        <!-- Popper.js - Bootstrap tooltips -->
+        <script type="text/javascript" src="~/assets/js/bootstrap/popper.min.js" asp-append-version="true"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="~/assets/js/bootstrap/bootstrap.min.js" asp-append-version="true"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="~/assets/js/bootstrap/mdb.min.js" asp-append-version="true"></script>
+        <!-- Velocity -->
+        <script type="text/javascript" src="~/assets/plugins/velocity/velocity.min.js" asp-append-version="true"></script>
+        <script type="text/javascript" src="~/assets/plugins/velocity/velocity.ui.min.js" asp-append-version="true"></script>
+        <!-- Custom Scrollbar -->
+        <script type="text/javascript" src="~/assets/plugins/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js" asp-append-version="true"></script>
+        <!-- jQuery Visible -->
+        <script type="text/javascript" src="~/assets/plugins/jquery_visible/jquery.visible.min.js" asp-append-version="true"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script type="text/javascript" src="~/assets/js/misc/ie10-viewport-bug-workaround.js" asp-append-version="true"></script>
+
+        <!-- SCRIPTS - REQUIRED END -->
+        <!-- SCRIPTS - OPTIONAL START -->
+        <!-- Image Placeholder -->
+        <script type="text/javascript" src="~/assets/js/misc/holder.min.js" asp-append-version="true"></script>
+        <!-- SCRIPTS - OPTIONAL END -->
+        <!-- QuillPro Scripts -->
+        <script type="text/javascript" src="~/assets/js/scripts.js" asp-append-version="true"></script>
+
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/abp.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js" asp-append-version="true"></script>
+
+        @*<script src="~/lib/json2/json2.js" asp-append-version="true"></script>*@
+        @*<script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>*@
+        @*<script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true"></script>
         <script src="~/lib/moment/min/moment-with-locales.js" asp-append-version="true"></script>
         <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
         <script src="~/lib/blockUI/jquery.blockUI.js" asp-append-version="true"></script>
@@ -88,30 +224,30 @@
         <script src="~/lib/sweetalert/dist/sweetalert.min.js" asp-append-version="true"></script>
         <script src="~/lib/spin.js/spin.js" asp-append-version="true"></script>
         <script src="~/lib/spin.js/jquery.spin.js" asp-append-version="true"></script>
-        <script src="~/lib/Waves/dist/waves.js" asp-append-version="true"></script>
-        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/abp.js" asp-append-version="true"></script>
-        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js" asp-append-version="true"></script>
-        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js" asp-append-version="true"></script>
-        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js" asp-append-version="true"></script>
-        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js" asp-append-version="true"></script>
-        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js" asp-append-version="true"></script>
+        <script src="~/lib/Waves/dist/waves.js" asp-append-version="true"></script>*@
+
+
+        @*<script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js" asp-append-version="true"></script>*@
+        @*<script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js" asp-append-version="true"></script>*@
+        @*<script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js" asp-append-version="true"></script>*@
+        @*<script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js" asp-append-version="true"></script>*@
         <script src="~/js/admin.js" asp-append-version="true"></script>
         <script src="~/js/main.js" asp-append-version="true"></script>
 
-        @if (CultureInfo.CurrentUICulture.Name != "en")
-    {
-        <script src="~/lib/jquery-validation/src/localization/messages_@Html.Raw(CultureInfo.CurrentUICulture.Name.Replace("-", "_") + ".js")" asp-append-version="true"></script>
-}
+        @*@if (CultureInfo.CurrentUICulture.Name != "en")
+        {
+            <script src="~/lib/jquery-validation/src/localization/messages_@Html.Raw(CultureInfo.CurrentUICulture.Name.Replace("-", "_") + ".js")" asp-append-version="true"></script>
+        }*@
     </environment>
 
-    <environment names="Staging,Production">
-        <script src="~/view-resources/Views/_Bundles/account-layout.min.js" asp-append-version="true"></script>
-    </environment>
+    @*<environment names="Staging,Production">
+            <script src="~/view-resources/Views/_Bundles/account-layout.min.js" asp-append-version="true"></script>
+        </environment>*@
 
-    <script>
-    // Localizing momentjs
-    moment.locale('@CultureInfo.CurrentUICulture.Name');
-    </script>
+    @*<script>
+        // Localizing momentjs
+        moment.locale('@CultureInfo.CurrentUICulture.Name');
+        </script>*@
 
     <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
     <script src="~/AbpServiceProxies/GetAll?v=@(AppTimes.StartupTime.Ticks)" type="text/javascript"></script>

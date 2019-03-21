@@ -1,6 +1,32 @@
 ﻿@using AbpDemoOne.Web.Views.Shared.Components.SideBarUserArea
 @model SideBarUserAreaViewModel
-@if (Model.LoginInformations != null && Model.LoginInformations.User != null)
+
+<li class="nav-item dropdown">
+    @if (Model.LoginInformations != null && Model.LoginInformations.User != null)
+    {
+        <a class="nav-link dropdown-toggle" id="navbar-dropdown-navbar-profile" data-toggle="dropdown" data-flip="false" aria-haspopup="true" aria-expanded="false">
+            <div class="profile-name">
+                @Html.Raw(Model.GetShownLoginName())
+            </div>
+            <div class="profile-picture bg-gradient bg-primary has-message float-right">
+                <img src="~/images/user.png" width="44" height="44">
+                <div class="email">@Model.LoginInformations.User.EmailAddress</div>
+            </div>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-dropdown-navbar-profile">
+            <li><a class="dropdown-item" href="profiles-member-profile.html">Profile</a></li>
+            <li>
+                <a class="dropdown-item" href="@Url.Action("Messages", "Messages", new { area= string.Empty })">@L("Messages")
+                    <span class="badge badge-danger badge-pill float-right">3</span>
+                </a>
+            </li>
+            <li><a class="dropdown-item" href="@Url.Action("Messages", "Messages", new { area= string.Empty })">@L("Settings")</a></li>
+            <li><a class="dropdown-item" href="@Url.Action("Logout", "Account", new { area= string.Empty })"><i class="material-icons">input</i>@L("Logout")</a></li>
+        </ul>
+    }
+    </li>
+
+@*@if (Model.LoginInformations != null && Model.LoginInformations.User != null)
 {
     <div class="user-info">
         <div class="image">
@@ -17,4 +43,4 @@
             </div>
         </div>
     </div>
-}
+}*@

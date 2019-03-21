@@ -77,6 +77,21 @@ namespace AbpDemoOne.Web.Controllers
 
         public ActionResult Login(string userNameOrEmailAddress = "", string returnUrl = "", string successMessage = "")
         {
+
+            try
+            {
+                Logger.Debug("这是debug!");
+                Logger.Info("这是Info!");
+                Logger.Error("这是Error!");
+                Logger.Fatal("这是Fatal!");
+                Logger.Warn("这是Warn!");
+            }
+            catch (UserFriendlyException ex)
+            {
+
+                throw ex;
+            }
+
             if (string.IsNullOrWhiteSpace(returnUrl))
             {
                 returnUrl = GetAppHomeUrl();
@@ -383,6 +398,7 @@ namespace AbpDemoOne.Web.Controllers
 
         #region Change Tenant
 
+        [HttpGet]
         public async Task<ActionResult> TenantChangeModal()
         {
             var loginInfo = await _sessionAppService.GetCurrentLoginInformations();

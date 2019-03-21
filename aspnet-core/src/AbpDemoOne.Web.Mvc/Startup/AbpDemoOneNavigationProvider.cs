@@ -17,7 +17,7 @@ namespace AbpDemoOne.Web.Startup
                         PageNames.Home,
                         L("HomePage"),
                         url: "",
-                        icon: "home",
+                        icon: "batch-icon-home",
                         requiresAuthentication: true
                     )
                 ).AddItem(
@@ -25,7 +25,7 @@ namespace AbpDemoOne.Web.Startup
                         PageNames.Tenants,
                         L("Tenants"),
                         url: "Tenants",
-                        icon: "business",
+                        icon: "batch-icon-podcast",
                         requiredPermissionName: PermissionNames.Pages_Tenants
                     )
                 ).AddItem(
@@ -33,7 +33,7 @@ namespace AbpDemoOne.Web.Startup
                         PageNames.Users,
                         L("Users"),
                         url: "Users",
-                        icon: "people",
+                        icon: "batch-icon-users",
                         requiredPermissionName: PermissionNames.Pages_Users
                     )
                 ).AddItem(
@@ -41,7 +41,7 @@ namespace AbpDemoOne.Web.Startup
                         PageNames.Roles,
                         L("Roles"),
                         url: "Roles",
-                        icon: "local_offer",
+                        icon: "batch-icon-tag",
                         requiredPermissionName: PermissionNames.Pages_Roles
                     )
                 )
@@ -50,13 +50,13 @@ namespace AbpDemoOne.Web.Startup
                         PageNames.About,
                         L("About"),
                         url: "About",
-                        icon: "info"
+                        icon: "batch-icon-spam-alt"
                     )
                 ).AddItem( // Menu items below is just for demonstration!
                     new MenuItemDefinition(
                         "MultiLevelMenu",
                         L("MultiLevelMenu"),
-                        icon: "menu"
+                        icon: "batch-icon-menu"
                     ).AddItem(
                         new MenuItemDefinition(
                             "AspNetBoilerplate",

@@ -1,4 +1,7 @@
 ﻿@using AbpDemoOne.Web.Resources
+@using Abp.MultiTenancy
+@using AbpDemoOne.Web.Models.Common.Modals
+@using AbpDemoOne.Web.Views.Shared.Components.TenantChange
 @inject IWebResourceManager WebResourceManager
 @{
     WebResourceManager.AddScript(ApplicationPath + "view-resources/Views/Shared/Components/TenantChange/Default.js");
@@ -24,7 +27,7 @@
 <div class="modal fade" id="TenantChangeModal" tabindex="-1" role="dialog" aria-labelledby="UserCreateModalLabel" data-backdrop="static">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-
+           
         </div>
     </div>
 </div>

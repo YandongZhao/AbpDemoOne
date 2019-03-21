@@ -1,0 +1,63 @@
+﻿@using Abp.Collections.Extensions
+@using AbpDemoOne.Web.Views.Shared.Components.NotificationMisc
+@model NotificationMiscViewModel
+@{
+    //TODO: Get current virtual path
+    var ApplicationPath = "/";
+}
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle no-waves-effect" id="navbar-notification-misc" data-toggle="dropdown" data-flip="false" aria-haspopup="true" aria-expanded="false">
+        <i class="batch-icon batch-icon-bell"></i>
+        <span class="notification-number">4</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-right dropdown-menu-md" aria-labelledby="navbar-notification-misc">
+        <li class="media">
+            <a href="task-list.html">
+                <i class="batch-icon batch-icon-bell batch-icon-xl d-flex mr-3"></i>
+                <div class="media-body">
+                    <h6 class="mt-0 mb-1 notification-heading">General Notification</h6>
+                    <div class="notification-text">
+                        Cras sit amet nibh libero
+                    </div>
+                    <span class="notification-time">Just now</span>
+                </div>
+            </a>
+        </li>
+        <li class="media">
+            <a href="task-list.html">
+                <i class="batch-icon batch-icon-cloud-download batch-icon-xl d-flex mr-3"></i>
+                <div class="media-body">
+                    <h6 class="mt-0 mb-1 notification-heading">Your Download Is Ready</h6>
+                    <div class="notification-text">
+                        Nibh amet cras sit libero
+                    </div>
+                    <span class="notification-time">5 minutes ago</span>
+                </div>
+            </a>
+        </li>
+        <li class="media">
+            <a href="task-list.html">
+                <i class="batch-icon batch-icon-tag-alt-2 batch-icon-xl d-flex mr-3"></i>
+                <div class="media-body">
+                    <h6 class="mt-0 mb-1 notification-heading">New Order</h6>
+                    <div class="notification-text">
+                        Cras sit amet nibh libero
+                    </div>
+                    <span class="notification-time">Yesterday</span>
+                </div>
+            </a>
+        </li>
+        <li class="media">
+            <a href="task-list.html">
+                <i class="batch-icon batch-icon-pull batch-icon-xl d-flex mr-3"></i>
+                <div class="media-body">
+                    <h6 class="mt-0 mb-1 notification-heading">Pull Request</h6>
+                    <div class="notification-text">
+                        Cras sit amet nibh libero
+                    </div>
+                    <span class="notification-time">3 day ago</span>
+                </div>
+            </a>
+        </li>
+    </ul>
+</li>
