@@ -18,69 +18,118 @@
         return ApplicationPath + url;
     });
 }
-<div class="menu">
-    <ul class="list">
-        @foreach (var menuItem in Model.MainMenu.Items)
-        {
-            <li class="@(Model.ActiveMenuItemName == menuItem.Name ? "active" : "")">
-                @if (menuItem.Items.IsNullOrEmpty())
+<li>
+    <h6 class="nav-header">@Model.MainMenu.DisplayName</h6>
+</li>
+@foreach (var menuItem in Model.MainMenu.Items)
+{
+    @if (menuItem.Items.IsNullOrEmpty())
+    {
+
+        <li class="nav-item">
+            <a class="nav-link @(Model.ActiveMenuItemName == menuItem.Name ? "active" : "")" href="@calculateMenuUrl(menuItem.Url)">
+                @if (!string.IsNullOrWhiteSpace(menuItem.Icon))
                 {
-                    <a href="@calculateMenuUrl(menuItem.Url)">
-                        @if (!string.IsNullOrWhiteSpace(menuItem.Icon))
-                        {
-                            <i class="material-icons">@menuItem.Icon</i>
-                        }
-                        <span>@menuItem.DisplayName</span>
-                    </a>
+                    <i class="batch-icon batch-icon-browser-alt">@menuItem.Icon</i>
                 }
-                else
-                {
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        @if (!string.IsNullOrWhiteSpace(menuItem.Icon))
-                        {
-                            <i class="material-icons">@menuItem.Icon</i>
-                        }
-                        <span>@menuItem.DisplayName</span>
-                    </a>
-                    <ul class="ml-menu">
+                @menuItem.DisplayName <span class="sr-only">(current)</span>
+            </a>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            @if (!!string.IsNullOrWhiteSpace(menuItem.Icon))
+            {
+                <a class="nav-link nav-parent active" href="#">
+
+                    <i class="batch-icon batch-icon-layout-content-left ">@menuItem.Icon</i>
+
+                    Layout
+                    </ a >
+            }
+            else
+            {
+
+            }
+
+                    <ul class="nav nav-pills flex-column">
                         @foreach (var subMenuItem in menuItem.Items)
                         {
-                            <li class="@(Model.ActiveMenuItemName == subMenuItem.Name ? "active" : "")">
-                                @if (subMenuItem.Items.IsNullOrEmpty())
-                                {
-                                    <a href="@calculateMenuUrl(subMenuItem.Url)">
-                                        @if (!string.IsNullOrWhiteSpace(subMenuItem.Icon))
-                                        {
-                                            <i class="material-icons">@subMenuItem.Icon</i>
-                                        }
-                                        <span>@subMenuItem.DisplayName</span>
-                                    </a>
-                                }
-                                else
-                                {
-                                    <a href="javascript:void(0);" class="menu-toggle">
-                                        @if (!string.IsNullOrWhiteSpace(subMenuItem.Icon))
-                                        {
-                                            <i class="material-icons">@subMenuItem.Icon</i>
-                                        }
-                                        <span>@subMenuItem.DisplayName</span>
-                                    </a>
-                                    <ul class="ml-menu">
-                                        @foreach (var subSubMenuItem in subMenuItem.Items)
-                                        {
-                                            <li class="@(Model.ActiveMenuItemName == subSubMenuItem.Name ? "active" : "")">
-                                                <a href="@calculateMenuUrl(subSubMenuItem.Url)">
-                                                    @subSubMenuItem.DisplayName
-                                                </a>
-                                            </li>
-                                        }
-                                    </ul>
-                                }
+                            <li class="nav-item">
+                                <a class="nav-link @(Model.ActiveMenuItemName == subSubMenuItem.Name ? "active" : "")" href="layout-left-menu-hidden.html">Left Menu - Hidden</a>
                             </li>
                         }
-                    </ul>
+                        </ul>
+    </li>
+    }
                 }
-            </li>
-        }
-    </ul>
-</div>
+
+
+
+                @*<div class="menu">
+            <ul class="list">
+                @foreach (var menuItem in Model.MainMenu.Items)
+                {
+                    <li class="@(Model.ActiveMenuItemName == menuItem.Name ? "active" : "")">
+                        @if (menuItem.Items.IsNullOrEmpty())
+                        {
+                            <a href="@calculateMenuUrl(menuItem.Url)">
+                                @if (!string.IsNullOrWhiteSpace(menuItem.Icon))
+                                {
+                                    <i class="material-icons">@menuItem.Icon</i>
+                                }
+                                <span>@menuItem.DisplayName</span>
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                @if (!string.IsNullOrWhiteSpace(menuItem.Icon))
+                                {
+                                    <i class="material-icons">@menuItem.Icon</i>
+                                }
+                                <span>@menuItem.DisplayName</span>
+                            </a>
+                            <ul class="ml-menu">
+                                @foreach (var subMenuItem in menuItem.Items)
+                                {
+                                    <li class="@(Model.ActiveMenuItemName == subMenuItem.Name ? "active" : "")">
+                                        @if (subMenuItem.Items.IsNullOrEmpty())
+                                        {
+                                            <a href="@calculateMenuUrl(subMenuItem.Url)">
+                                                @if (!string.IsNullOrWhiteSpace(subMenuItem.Icon))
+                                                {
+                                                    <i class="material-icons">@subMenuItem.Icon</i>
+                                                }
+                                                <span>@subMenuItem.DisplayName</span>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a href="javascript:void(0);" class="menu-toggle">
+                                                @if (!string.IsNullOrWhiteSpace(subMenuItem.Icon))
+                                                {
+                                                    <i class="material-icons">@subMenuItem.Icon</i>
+                                                }
+                                                <span>@subMenuItem.DisplayName</span>
+                                            </a>
+                                            <ul class="ml-menu">
+                                                @foreach (var subSubMenuItem in subMenuItem.Items)
+                                                {
+                                                    <li class="@(Model.ActiveMenuItemName == subSubMenuItem.Name ? "active" : "")">
+                                                        <a href="@calculateMenuUrl(subSubMenuItem.Url)">
+                                                            @subSubMenuItem.DisplayName
+                                                        </a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        }
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    </li>
+                }
+            </ul>
+        </div>*@
