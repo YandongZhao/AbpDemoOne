@@ -13,6 +13,7 @@ namespace AbpDemoOne
         public override void PreInitialize()
         {
             Configuration.Authorization.Providers.Add<AbpDemoOneAuthorizationProvider>();
+            
         }
 
         public override void Initialize()

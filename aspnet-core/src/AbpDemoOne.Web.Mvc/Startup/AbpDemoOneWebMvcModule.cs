@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using AbpDemoOne.Configuration;
+using Abp.Configuration.Startup;
 
 namespace AbpDemoOne.Web.Startup
 {
@@ -21,6 +22,7 @@ namespace AbpDemoOne.Web.Startup
         public override void PreInitialize()
         {
             Configuration.Navigation.Providers.Add<AbpDemoOneNavigationProvider>();
+            Configuration.Modules.AbpWebCommon().SendAllExceptionsToClients = true;
         }
 
         public override void Initialize()

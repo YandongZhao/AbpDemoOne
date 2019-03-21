@@ -54,6 +54,7 @@ namespace AbpDemoOne.Users
         /// <param name="passwordHasher"></param>
         /// <param name="abpSession"></param>
         /// <param name="logInManager"></param>
+        /// <param name="sqlRepository"></param>
         public UserAppService(
             IRepository<User, long> repository,
             UserManager userManager,
@@ -181,6 +182,15 @@ namespace AbpDemoOne.Users
 
                 throw ex;
             }
+        }
+
+        /// <summary>
+        /// 测试抛出详细异常
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<UserDto>> getException()
+        {
+            throw new UserFriendlyException("测试抛出详细异常");
         }
 
         protected override User MapToEntity(CreateUserDto createInput)

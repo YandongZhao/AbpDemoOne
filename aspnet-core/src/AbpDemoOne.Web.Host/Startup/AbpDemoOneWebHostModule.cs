@@ -22,6 +22,13 @@ namespace AbpDemoOne.Web.Host.Startup
             _appConfiguration = env.GetAppConfiguration();
         }
 
+        public override void PreInitialize()
+        {
+            base.PreInitialize();
+            Configuration.Modules.AbpWebCommon().SendAllExceptionsToClients = true;
+        }
+       
+
         public override void Initialize()
         {
             IocManager.RegisterAssemblyByConvention(typeof(AbpDemoOneWebHostModule).GetAssembly());
