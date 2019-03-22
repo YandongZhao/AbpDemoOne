@@ -4,91 +4,98 @@
 @model AbpDemoOne.Web.Models.Account.LoginFormViewModel
 @section Styles
     {
-    <environment names="Development">
-        <link rel="stylesheet" href="~/view-resources/Views/Account/Login.css" asp-append-version="true" />
-    </environment>
 
-    <environment names="Staging,Production">
-        <link rel="stylesheet" href="~/view-resources/Views/Account/Login.min.css" asp-append-version="true" />
-    </environment>
+    @*<environment names="Development">
+            <link rel="stylesheet" href="~/view-resources/Views/Account/Login.css" asp-append-version="true" />
+        </environment>
+
+        <environment names="Staging,Production">
+            <link rel="stylesheet" href="~/view-resources/Views/Account/Login.min.css" asp-append-version="true" />
+        </environment>*@
 
 }
 @section Scripts
     {
-    @*<environment names="Development">
-        <script src="~/view-resources/Views/Account/Login.js" asp-append-version="true"></script>
-    </environment>
+    <environment names="Development">
+            <script src="~/view-resources/Views/Account/Login.js" asp-append-version="true"></script>
+        </environment>
 
-    <environment names="Staging,Production">
-        <script src="~/view-resources/Views/Account/Login.min.js" asp-append-version="true"></script>
-    </environment>*@
+        <environment names="Staging,Production">
+            <script src="~/view-resources/Views/Account/Login.min.js" asp-append-version="true"></script>
+        </environment>
 }
 
-<form>
-    <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-    </div>
-    <div class="custom-control custom-checkbox mb-3">
-        <input type="checkbox" class="custom-control-input" id="keep-signed-in">
-        <label class="custom-control-label" for="keep-signed-in">Keep Me Signed In</label>
-    </div>
-    <button type="submit" class="btn btn-primary btn-gradient btn-block">
-        <i class="batch-icon batch-icon-key"></i>
-        Sign In
-    </button>
-    <hr>
-    <p class="text-center">
-        Don't Have An Account? <a href="sisu-signup.html">Sign Up here</a>
-    </p>
-</form>
-
-
-
-@*<div class="card" id="﻿LoginArea">
-    <div class="body">
-        <form id="LoginForm" asp-action="Login" method="post">
+        <form id="LoginForm" method="post" asp-action="Login">
             <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
             <input type="hidden" name="returnUrlHash" />
-            <h4 class="text-center">@L("LogIn")</h4>
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <i class="material-icons">person</i>
-                </span>
-                <div class="form-line">
-                    <input type="text" class="form-control" name="usernameOrEmailAddress" placeholder="@L("UserNameOrEmail")" required autofocus maxlength="@AbpUserBase.MaxEmailAddressLength">
-                </div>
+            <div class="form-group">
+                <label for="inputUserNameOrEmail">@L("UserNameOrEmail")</label>
+                <input type="text" class="form-control" name="usernameOrEmailAddress" id="inputUserNameOrEmail" aria-describedby="emailHelp" placeholder="@L("UserNameOrEmail")">
+                <small id="emailHelp" class="form-text text-muted">@L("EmailHelp")</small>
             </div>
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <i class="material-icons">lock</i>
-                </span>
-                <div class="form-line">
-                    <input type="password" class="form-control" name="Password" placeholder="@L("Password")" required maxlength="@AbpUserBase.MaxPlainPasswordLength">
-                </div>
+            <div class="form-group">
+                <label for="inputPassword">@L("Password")</label>
+                <input type="password" class="form-control" name="Password" id="inputPassword" placeholder="@L("Password")">
             </div>
-            <div class="row">
-                <div class="col-xs-8 p-t-5">
-                    <input type="checkbox" name="RememberMe" id="rememberme" class="filled-in chk-col-pink" value="true">
-                    <label for="rememberme">@L("RememberMe")</label>
-                </div>
-                <div class="col-xs-4">
-                    <button id="LoginButton" class="btn btn-block bg-pink waves-effect" type="submit">@L("LogIn")</button>
-                </div>
+            <div class="custom-control custom-checkbox mb-3">
+                <input type="checkbox" class="custom-control-input" id="keep-signed-in">
+                <label class="custom-control-label" for="keep-signed-in">@L("RememberMe")</label>
             </div>
+            <button type="submit" class="btn btn-primary btn-gradient btn-block">
+                <i class="batch-icon batch-icon-key"></i>
+                @L("LogIn")
+            </button>
+            <hr>
             @if (Model.IsSelfRegistrationAllowed)
             {
-                <div class="row m-t-15 m-b--20">
-                    <div class="col-xs-12">
-                        <a asp-action="Register">@L("Register")</a>
-                    </div>
-                </div>
+                <p class="text-center">
+                    @L("DonotHaveAnAccount")<a asp-controller="Account" asp-action="Register">@L("Register")</a>
+                </p>
             }
         </form>
-    </div>
-</div>*@
+
+
+<ul>
+        @*<li><div class="card" id="﻿LoginArea">
+            <div class="body">
+                <form id="LoginForm" asp-action="Login" method="post">
+                    <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                    <input type="hidden" name="returnUrlHash" />
+                    <h4 class="text-center">@L("LogIn")</h4>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="text" class="form-control" name="usernameOrEmailAddress" placeholder="@L("UserNameOrEmail")" required autofocus maxlength="@AbpUserBase.MaxEmailAddressLength">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">lock</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="password" class="form-control" name="Password" placeholder="@L("Password")" required maxlength="@AbpUserBase.MaxPlainPasswordLength">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-8 p-t-5">
+                            <input type="checkbox" name="RememberMe" id="rememberme" class="filled-in chk-col-pink" value="true">
+                            <label for="rememberme">@L("RememberMe")</label>
+                        </div>
+                        <div class="col-xs-4">
+                            <button id="LoginButton" class="btn btn-block bg-pink waves-effect" type="submit">@L("LogIn")</button>
+                        </div>
+                    </div>
+                    @if (Model.IsSelfRegistrationAllowed)
+                    {
+                        <div class="row m-t-15 m-b--20">
+                            <div class="col-xs-12">
+                                <a asp-action="Register">@L("Register")</a>
+                            </div>
+                        </div>
+                    }
+                </form>
+            </div>
+        </div></li>*@
+    </ul>

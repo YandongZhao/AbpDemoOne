@@ -6,28 +6,35 @@
 @{
     WebResourceManager.AddScript(ApplicationPath + "view-resources/Views/Shared/Components/TenantChange/Default.js");
 }
-<div class="card tenant-change-component" style="margin-bottom: 3px;">
-    <div class="body text-center">
-        <span>
-            @L("CurrentTenant"):
 
-            @if (Model.Tenant != null)
-            {
-                <span title="@Model.Tenant.Name"><strong>@Model.Tenant.TenancyName</strong></span>
-            }
-            else
-            {
-                <span>@L("NotSelected")</span>
-            }
 
-            (<a href="#" data-toggle="modal" data-target="#TenantChangeModal">@L("Change")</a>)
-        </span>
+    @*<div class="card">
+        <div class="card-body">
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        </div>
+    </div>*@
+<div class="card-xs tenant-change-component" style="margin-bottom: 3px;">
+    <div class=" card-body body text-center">
+        <p class="card-text">
+                @L("CurrentTenant"):
+
+                @if (Model.Tenant != null)
+                {
+                    <span title="@Model.Tenant.Name"><strong>@Model.Tenant.TenancyName</strong></span>
+                }
+                else
+                {
+                    <span>@L("NotSelected")</span>
+                }
+
+                (<a href="#" data-toggle="modal" data-target="#TenantChangeModal">@L("Change")</a>)
+        </p>
     </div>
 </div>
 <div class="modal fade" id="TenantChangeModal" tabindex="-1" role="dialog" aria-labelledby="UserCreateModalLabel" data-backdrop="static">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-           
+
         </div>
     </div>
 </div>

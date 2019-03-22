@@ -20,9 +20,14 @@
     <text name="ChangeTenant" value="更改租户"/>
     <text name="LeaveEmptyToSwitchToHost" value="留空以切换到Host"/>
     <text name="LogIn" value="登录" />
+    <text name="Register" value="注册"/>
+    <text name="CurrentTenant" value="切换租户"/>
+    <text name="DonotHaveAnAccount" value="没有账号？"/>
+    <text name="AlreadyHaveAnAccount" value="已存在账号？"/>
     <text name="LoginFailed" value="登录失败!" />
+    <text name="EmailHelp" value="我们绝不会泄漏您的邮箱给任何人"/>
     <text name="AppName" >AbpDemoOne</text>
-    <text name="UserNamePlaceholder" >请输入账户</text>
+    <text name="UserNamePlaceholder" >请输入用户名</text>
     <text name="PasswordPlaceholder" >请输入密码</text>
     <text name="CopyRight" >© 2018 AbpDemoOne</text>
     <text name="LoginPrompt" >正在登陆，请稍候！</text>

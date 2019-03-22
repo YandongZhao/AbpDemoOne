@@ -20,7 +20,10 @@
     <text name="UpdatePassword" value="Update Password" />
     <text name="RememberMe" value="Remember me" />
     <text name="LogIn" value="Log in" />
+    <text name="DonotHaveAnAccount" value="Don't Have An Account?"/>
+    <text name="AlreadyHaveAnAccount" value="Already Have An Account?"/>
     <text name="LoginFailed" value="Login failed!" />
+    <text name="EmailHelp" value="We'll never share your email with anyone else."/>
     <text name="NameSurname" value="Name surname" />
     <text name="UserName" value="User name" />
     <text name="Name" value="Name" />

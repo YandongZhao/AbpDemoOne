@@ -22,62 +22,50 @@
         <script src="~/view-resources/Views/Account/Register.min.js" asp-append-version="true"></script>
     </environment>
 }
-<div class="card">
-    <div class="body">
-        <form id="RegisterForm" asp-action="Register" method="post">
-            <h4 class="text-center">@L("Register")</h4>
 
-            @if (@ViewBag.ErrorMessage != null)
-            {
-                <div class="alert alert-danger">
-                    <i class="fa fa-warning"></i> @ViewBag.ErrorMessage
-                </div>
-            }
+    <form>
+        <input type="hidden" name="IsExternalLogin" value="@Model.IsExternalLogin.ToString()" />
+        <input type="hidden" name="ExternalLoginAuthSchema" value="@Model.ExternalLoginAuthSchema" />
+        <div class="form-group">
+            <label for="inputName">@L("Name")</label>
+            <input type="text" class="form-control" id="inputName" name="Name" placeholder="@L("Name")" value="@Model.Name" required maxlength="@AbpUserBase.MaxNameLength">
 
-            <input type="hidden" name="IsExternalLogin" value="@Model.IsExternalLogin.ToString()" />
-            <input type="hidden" name="ExternalLoginAuthSchema" value="@Model.ExternalLoginAuthSchema" />
+        </div>
+        <div class="form-group">
+            <label for="inputSurname">@L("Surname")</label>
+            <input type="text" class="form-control" id="inputSurname" name="Surname" placeholder="@L("Surname")" value="@Model.Surname" required maxlength="@AbpUserBase.MaxSurnameLength">
 
-            <div class="form-group form-float">
-                <div class="form-line">
-                    <input type="text" class="form-control" name="Name" value="@Model.Name" required maxlength="@AbpUserBase.MaxNameLength">
-                    <label class="form-label">@L("Name")</label>
-                </div>
-            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmailAddress">@L("EmailAddress")</label>
+            <input type="email" class="form-control" id="inputEmailAddress" name="EmailAddress" placeholder="@L("EmailAddress")" value="@Model.EmailAddress" required maxlength="@AbpUserBase.MaxEmailAddressLength">
 
-            <div class="form-group form-float">
-                <div class="form-line">
-                    <input type="text" class="form-control" name="Surname" value="@Model.Surname" required maxlength="@AbpUserBase.MaxSurnameLength">
-                    <label class="form-label">@L("Surname")</label>
-                </div>
-            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail1">@L("UserName")</label>
+            <input type="text" class="form-control" id="inputEmail1" name="UserName" placeholder="@L("UserNamePlaceholder")" value="@Model.UserName" required maxlength="@AbpUserBase.MaxUserNameLength">
 
-            <div class="form-group form-float">
-                <div class="form-line">
-                    <input type="email" class="form-control" name="EmailAddress" value="@Model.EmailAddress" required maxlength="@AbpUserBase.MaxEmailAddressLength">
-                    <label class="form-label">@L("EmailAddress")</label>
-                </div>
-            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword">@L("Password")</label>
+            <input type="password" class="form-control" id="inputPassword" name="Password" placeholder="@L("PasswordPlaceholder")" value="@Model.Password" required maxlength="@AbpUserBase.MaxPlainPasswordLength">
 
-            <div class="form-group form-float">
-                <div class="form-line">
-                    <input type="text" class="form-control" name="UserName" value="@Model.UserName" required maxlength="@AbpUserBase.MaxUserNameLength">
-                    <label class="form-label">@L("UserName")</label>
-                </div>
-            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputConfirmPassword">@L("ConfirmPassword")</label>
+            <input type="password" class="form-control" id="inputConfirmPassword" placeholder="@L("Password")">
+        </div>
+        @*<div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="newsletter-signup">
+            <label class="custom-control-label" for="newsletter-signup">I want to receive weekly Newsletters</label>
+        </div>*@
+        <button type="submit" class="btn btn-primary btn-gradient btn-block">
+            <i class="batch-icon batch-icon-quill"></i>
+           @L("Register")
+        </button>
+        <hr>
+        <p class="text-center">
+            @L("AlreadyHaveAnAccount") <a asp-controller="Account" asp-action="Login">@L("Login")</a>
+        </p>
+    </form>
 
-            <div class="form-group form-float">
-                <div class="form-line">
-                    <input type="password" class="form-control" name="Password" required maxlength="@AbpUserBase.MaxPlainPasswordLength">
-                    <label class="form-label">@L("Password")</label>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-xs-12">
-                    <a asp-action="Login" class="btn btn-default waves-effect" >@L("Back")</a>
-                    <button id="RegisterButton" class="btn bg-pink waves-effect" type="submit">@L("Register")</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
