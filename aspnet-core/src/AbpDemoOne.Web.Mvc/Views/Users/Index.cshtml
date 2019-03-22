@@ -4,8 +4,9 @@
 @{
     ViewBag.CurrentPageName = PageNames.Users; // The menu item will be active for this page.
 }
+
 @section scripts
-{
+    {
     <environment names="Development">
         <script src="~/view-resources/Views/Users/Index.js" asp-append-version="true"></script>
     </environment>
@@ -14,63 +15,116 @@
         <script src="~/view-resources/Views/Users/Index.min.js" asp-append-version="true"></script>
     </environment>
 }
-<div class="row clearfix">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="card">
-            <div class="header">
-                <h2>
-                    @L("Users")
-                </h2>
-                <ul class="header-dropdown m-r--5">
-                    <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">more_vert</i>
-                        </a>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a id="RefreshButton" href="javascript:void(0);" class="waves-effect waves-block"><i class="material-icons">refresh</i>@L("Refresh")</a></li>
-                        </ul>
-                    </li>
-                </ul>
+
+
+
+<div class="card  ">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-6 text-left">
+                <h3 class="h-right">@L("Users")</h3>
             </div>
-            <div class="body table-responsive">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>@L("UserName")</th>
-                            <th>@L("FullName")</th>
-                            <th>@L("EmailAddress")</th>
-                            <th>@L("IsActive")</th>
-                            <th>@L("Actions")</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var user in Model.Users)
-                        {
-                            <tr>
-                                <td>@user.UserName</td>
-                                <td>@user.FullName</td>
-                                <td>@user.EmailAddress</td>
-                                <td><i class="material-icons" style="color:@(user.IsActive ? "green":"red");">@(user.IsActive ? "check_box" : "indeterminate_check_box")</i></td>
-                                <td class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">menu</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="#" class="waves-effect waves-block edit-user" data-user-id="@user.Id" data-toggle="modal" data-target="#UserEditModal"><i class="material-icons">edit</i>@L("Edit")</a></li>
-                                        <li><a href="#" class="waves-effect waves-block delete-user" data-user-id="@user.Id" data-user-name="@user.UserName"><i class="material-icons">delete_sweep</i>@L("Delete")</a></li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-                <button type="button" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" data-toggle="modal" data-target="#UserCreateModal">
+            <div class="col-md-6 text-right">
+                <a class="btn btn-size btn-default" data-toggle="modal" data-target="#UserCreateModal">
                     <i class="material-icons">add</i>
-                </button>
+                </a>
+                <a id="RefreshButton" href="javascript:void(0);" class=" btn btn-size btn-default ">
+                    <i class="material-icons">refresh</i>
+                </a>
             </div>
         </div>
     </div>
+    <div class="card-body">
+        <p class="card-text">
+            <div class="col-md-12 pb-5 ">
+                <div class="row">
+                    <div class="col-md-6 text-left">
+                        <span class=""></span>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <div class="input-group mb-3 ">
+                            <input type="text" class="form-control" placeholder="@L("UserNameOrEmail")" aria-label="UserNameOrEmail" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button"><i class="batch-icon batch-icon-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <table class=" table table-bordered table-sm  table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>@L("UserName")</th>
+                                <th>@L("FullName")</th>
+                                <th>@L("EmailAddress")</th>
+                                <th>@L("IsActive")</th>
+                                <th>@L("Actions")</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var user in Model.Users)
+                            {
+                                <tr>
+                                    <td>@user.UserName</td>
+                                    <td>@user.FullName</td>
+                                    <td>@user.EmailAddress</td>
+                                    <td>
+                                        <i class="material-icons" style="color:@(user.IsActive ? "green":"red");">@(user.IsActive ? "check_box" : "indeterminate_check_box")</i>
+                                    </td>
+                                    <td class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                            <i class="material-icons">menu</i>
+                                        </a>
+                                        <ul class="dropdown-menu pull-right">
+                                            <li><a href="#" class="waves-effect waves-block edit-user" data-user-id="@user.Id" data-toggle="modal" data-target="#UserEditModal"><i class="material-icons">edit</i>@L("Edit")</a></li>
+                                            <li><a href="#" class="waves-effect waves-block delete-user" data-user-id="@user.Id" data-user-name="@user.UserName"><i class="material-icons">delete_sweep</i>@L("Delete")</a></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <footer>
+                    <div class="row">
+                        <div class="col-md-6 customer-page text-left " style="margin-top: .8rem;"> 
+                          <div class="page " id="UsersTable_info" role="status" aria-live="polite">
+                            显示第 1 至 2 项结果，共 2 项
+                          </div>
+                           
+                        </div>
+                        <div class="col-md-6 text-right" style="  margin-top: .5rem;">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </p>
+    </div>
 </div>
+
+
+
 <div class="modal fade" id="UserCreateModal" tabindex="-1" role="dialog" aria-labelledby="UserCreateModalLabel" data-backdrop="static">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -81,93 +135,109 @@
             </div>
             <div class="modal-body">
                 <form name="userCreateForm" role="form" novalidate class="form-validation">
-                    <ul class="nav nav-tabs tab-nav-right" role="tablist">
-                        <li role="presentation" class="active"><a href="#create-user-details" data-toggle="tab">@L("UserDetails")</a></li>
-                        <li role="presentation"><a href="#create-user-roles" data-toggle="tab">@L("UserRoles")</a></li>
-                    </ul>
-                    <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane animated fadeIn active" id="create-user-details">
-                            <div class="row clearfix" style="margin-top:10px;">
-                                <div class="col-sm-12">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <input class="form-control" type="text" name="UserName" required maxlength="@AbpUserBase.MaxUserNameLength" minlength="2">
-                                            <label class="form-label">@L("UserName")</label>
+                    <div class="col-md-12">
+                        <ul class="nav nav-pills tab-col-blue-grey" id="myTab-2" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab-2" data-toggle="tab" href="#create-user-details" role="tab" aria-controls="home-2" aria-selected="true">@L("UserDetails")</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab-2" data-toggle="tab" href="#create-user-roles" role="tab" aria-controls="profile-2" aria-selected="false">@L("UserRoles")</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent-2">
+                            <div class="tab-pane fade show active" id="create-user-details" role="tabpanel" aria-labelledby="home-tab-2">
+                                <p class="text-justify">
+                                    <div class="row clearfix" style="margin-top:10px;">
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <label class="form-label">@L("UserName")</label>
+                                                    <input class="form-control" type="text" name="UserName" required maxlength="@AbpUserBase.MaxUserNameLength" minlength="2">
+
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row clearfix">
-                                <div class="col-sm-6">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <input type="text" name="Name" class="form-control" required maxlength="@AbpUserBase.MaxNameLength">
-                                            <label class="form-label">@L("Name")</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <input type="text" name="Surname" class="form-control" required maxlength="@AbpUserBase.MaxSurnameLength">
-                                            <label class="form-label">@L("Surname")</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <input type="email" name="EmailAddress" class="form-control" required maxlength="@AbpUserBase.MaxEmailAddressLength">
-                                            <label class="form-label">@L("EmailAddress")</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <input type="password" id="Password" name="Password" class="form-control" required maxlength="@AbpUserBase.MaxPlainPasswordLength">
-                                            <label class="form-label">@L("Password")</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <input type="password" id="ConfirmPassword" name="ConfirmPassword" class="form-control" required maxlength="@AbpUserBase.MaxPlainPasswordLength">
-                                            <label class="form-label">@L("ConfirmPassword")</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="checkbox">
-                                        <input type="checkbox" name="IsActive" value="true" id="CreateUserIsActive" class="filled-in" checked />
-                                        <label for="CreateUserIsActive">@L("IsActive")</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div role="tabpanel" class="tab-pane animated fadeIn" id="create-user-roles">
-                            <div class="row">
-                                <div class="col-sm-12 ">
-                                    @foreach (var role in Model.Roles)
-                                    {
+                                    <div class="row clearfix">
                                         <div class="col-sm-6">
-                                            <input type="checkbox" name="role" value="@role.NormalizedName" title="@role.Description" class="filled-in" id="role-@role.Id" />
-                                            <label for="role-@role.Id" title="@role.DisplayName">@role.Name</label>
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <label class="form-label">@L("Name")</label>
+                                                    <input type="text" name="Name" class="form-control" required maxlength="@AbpUserBase.MaxNameLength">
+
+                                                </div>
+                                            </div>
                                         </div>
-                                    }
-                                </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <label class="form-label">@L("Surname")</label>
+                                                    <input type="text" name="Surname" class="form-control" required maxlength="@AbpUserBase.MaxSurnameLength">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <label class="form-label">@L("EmailAddress")</label>
+                                                    <input type="email" name="EmailAddress" class="form-control" required maxlength="@AbpUserBase.MaxEmailAddressLength">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <label class="form-label">@L("Password")</label>
+                                                    <input type="password" id="Password" name="Password" class="form-control" required maxlength="@AbpUserBase.MaxPlainPasswordLength">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <label class="form-label">@L("ConfirmPassword")</label>
+                                                    <input type="password" id="ConfirmPassword" name="ConfirmPassword" class="form-control" required maxlength="@AbpUserBase.MaxPlainPasswordLength">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-sm-12">
+                                            <div class="checkbox">
+                                                <label for="CreateUserIsActive">@L("IsActive")</label>
+                                                <input type="checkbox" name="IsActive" value="true" id="CreateUserIsActive" class="filled-in" checked />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </p>
+                            </div>
+                            <div class="tab-pane fade" id="create-user-roles" role="tabpanel" aria-labelledby="profile-tab-2">
+                                <p class="text-justify">
+                                    <div class="col-sm-12 ">
+                                        @foreach (var role in Model.Roles)
+                                        {
+                                            <div class="col-sm-6">
+                                                <input type="checkbox" name="role" value="@role.NormalizedName" title="@role.Description" class="filled-in" id="role-@role.Id" />
+                                                <label for="role-@role.Id" title="@role.DisplayName">@role.Name</label>
+                                            </div>
+                                        }
+                                    </div>
+                                </p>
                             </div>
                         </div>
                     </div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">@L("Cancel")</button>
                         <button type="submit" class="btn btn-primary waves-effect">@L("Save")</button>

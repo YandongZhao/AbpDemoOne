@@ -43,9 +43,9 @@
         _$form.find('button[type="submit"]').click(function (e) {
             e.preventDefault();
 
-            if (!_$form.valid()) {
-                return;
-            }
+            //if (!_$form.valid()) {
+            //    return;
+            //}
 
             var user = _$form.serializeFormToObject(); //serializeFormToObject is defined in main.js
             user.roleNames = [];

@@ -65,9 +65,14 @@
         <!-- QuillPro Styles -->
         <link asp-append-version="true" rel="stylesheet" href="~/assets/css/quillpro/quillpro.css">
 
-        <link href="~/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css" rel="stylesheet" asp-append-version="true" />
-    </environment>
+        <link asp-append-version="true" href="~/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css" rel="stylesheet"  />
+        <link asp-append-version="true" href="~/fonts/material-icons/materialicons.css" rel="stylesheet" />
 
+        <link  href="~/view-resources/Views/Shared/_Layout.css" rel="stylesheet" />
+    </environment>
+    <style>
+
+    </style>
 
     <!-- View specific styles -->
     @RenderSection("styles", required: false)
@@ -191,18 +196,30 @@
         <!-- SCRIPTS - OPTIONAL END -->
         <!-- QuillPro Scripts -->
         <script asp-append-version="true" type="text/javascript" src="~/assets/js/scripts.js"></script>
+        <!-- Image Placeholder -->
+        <script type="text/javascript" src="assets/js/misc/holder.min.js"></script>
+        <!-- Form Validation -->
+        <script type="text/javascript" src="assets/plugins/form-validator/jquery.form-validator.min.js"></script>
+
         <script asp-append-version="true" type="text/javascript" src="~/lib/abp-web-resources/Abp/Framework/scripts/abp.js"></script>
+        <script asp-append-version="true" type="text/javascript" src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js"></script>
+        <script type="text/javascript" src="~/js/main.js"></script>
+
+        <!-- Datatables -->
+        @*<script type="text/javascript" src="~/assets/plugins/datatables/js/jquery.dataTables.min.js"></script>*@
+        @*<script type="text/javascript" src="~/assets/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>*@
+        @*<script type="text/javascript" src="~/assets/plugins/datatables/js/dataTables.responsive.min.js"></script>*@
 
     </environment>
 
-
+    <script src="~/lib/signalr-client/signalr.min.js" asp-append-version="true"></script>
+    <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js" asp-append-version="true"></script>
 
     <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
     <script src="~/AbpServiceProxies/GetAll?v=@(AppTimes.StartupTime.Ticks)" type="text/javascript"></script>
     <script src="~/AbpScripts/GetScripts?v=@(AppTimes.StartupTime.Ticks)" type="text/javascript"></script>
 
-    <script src="~/lib/signalr-client/signalr.min.js" asp-append-version="true"></script>
-    <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr-client.js" asp-append-version="true"></script>
+
 
     @WebResourceManager.RenderScripts()
 
