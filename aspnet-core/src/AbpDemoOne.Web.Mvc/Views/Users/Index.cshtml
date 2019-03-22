@@ -1,5 +1,6 @@
 ﻿@using Abp.Authorization.Users
 @using AbpDemoOne.Web.Startup
+@using AbpDemoOne.Web.Views.Shared.Components.Pagination;
 @model AbpDemoOne.Web.Models.Users.UserListViewModel
 @{
     ViewBag.CurrentPageName = PageNames.Users; // The menu item will be active for this page.
@@ -87,36 +88,7 @@
                 </div>
 
                 <footer>
-                    <div class="row">
-                        <div class="col-md-6 customer-page text-left " style="margin-top: .8rem;"> 
-                          <div class="page " id="UsersTable_info" role="status" aria-live="polite">
-                            显示第 1 至 2 项结果，共 2 项
-                          </div>
-                           
-                        </div>
-                        <div class="col-md-6 text-right" style="  margin-top: .5rem;">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination justify-content-center">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                            <span class="sr-only">Previous</span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                            <span class="sr-only">Next</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
+                  @await Component.InvokeAsync(typeof(PaginationViewComponent), new { pageCont = ViewBag.pageCont })
                 </footer>
             </div>
         </p>
@@ -237,7 +209,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">@L("Cancel")</button>
                         <button type="submit" class="btn btn-primary waves-effect">@L("Save")</button>
