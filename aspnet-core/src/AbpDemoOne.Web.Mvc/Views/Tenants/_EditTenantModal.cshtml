@@ -12,21 +12,20 @@
         <input type="hidden" name="Id" value="@Model.Id"/>
         <div class="form-group form-float">
             <div class="form-line">
-                <input class="form-control" type="text" name="TenancyName" value="@Model.TenancyName" required maxlength="64" minlength="2">
                 <label class="form-label">@L("TenancyName")</label>
+                <input class="form-control" type="text" name="TenancyName" value="@Model.TenancyName" required maxlength="64" minlength="2">
+
             </div>
         </div>
         <div class="form-group form-float">
             <div class="form-line">
-                <input type="text" name="Name" class="form-control" value="@Model.Name" required maxlength="128">
                 <label class="form-label">@L("Name")</label>
+                <input type="text" name="Name" class="form-control" value="@Model.Name" required maxlength="128">
             </div>
         </div>
-        <div class="form-group form-float">
-            <div class="">
-                <input id="isactive" type="checkbox" name="IsActive" value="true" @(Model.IsActive ? "checked" : "") class="form-control"/>
-                <label for="isactive" class="form-label">@L("IsActive")</label>
-            </div>
+        <div class="checkbox">
+            <label for="isactive" class="form-label">@L("IsActive")</label>
+            <input id="isactive" type="checkbox" name="IsActive" value="true" @(Model.IsActive ? "checked" : "") class="filled-in" />
         </div>
     </form>
 </div>

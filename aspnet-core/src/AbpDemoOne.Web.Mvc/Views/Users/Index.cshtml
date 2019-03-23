@@ -15,6 +15,7 @@
     <environment names="Staging,Production">
         <script src="~/view-resources/Views/Users/Index.min.js" asp-append-version="true"></script>
     </environment>
+
 }
 
 
@@ -39,20 +40,7 @@
         <p class="card-text">
             <div class="col-md-12 pb-5 ">
                 <div class="row">
-                    <div class="col-md-6 text-left">
-                        <span class=""></span>
-                    </div>
-                    <div class="col-md-6 text-right">
-                        <div class="input-group mb-3 ">
-                            <input type="text" class="form-control" placeholder="@L("UserNameOrEmail")" aria-label="UserNameOrEmail" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button"><i class="batch-icon batch-icon-search"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <table class=" table table-bordered table-sm  table-striped table-hover">
+                    <table class=" table table-datatable table-bordered table-sm  table-striped table-hover">
                         <thead>
                             <tr>
                                 <th>@L("UserName")</th>
@@ -86,10 +74,6 @@
                         </tbody>
                     </table>
                 </div>
-
-                <footer>
-                  @await Component.InvokeAsync(typeof(PaginationViewComponent), new { pageCont = ViewBag.pageCont })
-                </footer>
             </div>
         </p>
     </div>
@@ -124,7 +108,10 @@
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <label class="form-label">@L("UserName")</label>
-                                                    <input class="form-control" type="text" name="UserName" required maxlength="@AbpUserBase.MaxUserNameLength" minlength="2">
+                                                    <input class="form-control" type="text" name="UserName" required
+                                                           data-validation="length alphanumeric"
+                                                           data-validation-length="3-12"
+                                                           data-validation-error-msg="Username has to be an alphanumeric value (3-12 chars)" maxlength="@AbpUserBase.MaxUserNameLength" minlength="2">
 
                                                 </div>
                                             </div>
@@ -166,8 +153,8 @@
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <label class="form-label">@L("Password")</label>
-                                                    <input type="password" id="Password" name="Password" class="form-control" required maxlength="@AbpUserBase.MaxPlainPasswordLength">
-
+                                                    <input type="password" class="form-control" id="password" name="Password" data-validation="strength"  maxlength="@AbpUserBase.MaxPlainPasswordLength" placeholder="Password">
+                                                   
                                                 </div>
                                             </div>
                                         </div>
@@ -177,7 +164,7 @@
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <label class="form-label">@L("ConfirmPassword")</label>
-                                                    <input type="password" id="ConfirmPassword" name="ConfirmPassword" class="form-control" required maxlength="@AbpUserBase.MaxPlainPasswordLength">
+                                                    <input type="password" id="confirmPassword" name="ConfirmPassword" class="form-control" required maxlength="@AbpUserBase.MaxPlainPasswordLength">
 
                                                 </div>
                                             </div>
@@ -211,7 +198,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">@L("Cancel")</button>
-                        <button type="submit" class="btn btn-primary waves-effect">@L("Save")</button>
+                        <button id="validate" type="submit" class="btn btn-primary waves-effect">@L("OK")</button>
                     </div>
                 </form>
             </div>

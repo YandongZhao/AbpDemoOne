@@ -14,33 +14,16 @@
             </div>
         </a>
         <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-dropdown-navbar-profile">
-            <li><a class="dropdown-item" href="profiles-member-profile.html">Profile</a></li>
+            <li><a class="dropdown-item" href="/AppDemo/Profile" >Profile</a></li>
             <li>
-                <a class="dropdown-item" href="@Url.Action("Messages", "Messages", new { area= string.Empty })">@L("Messages")
+                <a class="dropdown-item" href="/AppDemo/Profile">@L("Messages")
                     <span class="badge badge-danger badge-pill float-right">3</span>
                 </a>
             </li>
-            <li><a class="dropdown-item" href="@Url.Action("Messages", "Messages", new { area= string.Empty })">@L("Settings")</a></li>
-            <li><a class="dropdown-item" href="@Url.Action("Logout", "Account", new { area= string.Empty })"><i class="material-icons">input</i>@L("Logout")</a></li>
+            <li><a class="dropdown-item" href="/AppDemo/Profile">@L("Settings")</a></li>
+            <li><a class="dropdown-item" href="/AppDemo/Profile"><i class="material-icons">input</i>@L("Logout")</a></li>
         </ul>
     }
     </li>
 
-@*@if (Model.LoginInformations != null && Model.LoginInformations.User != null)
-{
-    <div class="user-info">
-        <div class="image">
-            <img src="~/images/user.png" width="48" height="48" alt="User" />
-        </div>
-        <div class="info-container">
-            <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@Html.Raw(Model.GetShownLoginName())</div>
-            <div class="email">@Model.LoginInformations.User.EmailAddress</div>
-            <div class="btn-group user-helper-dropdown">
-                <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-                <ul class="dropdown-menu pull-right">
-                    <li><a href="@Url.Action("Logout", "Account", new { area= string.Empty })"><i class="material-icons">input</i>@L("Logout")</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-}*@
+

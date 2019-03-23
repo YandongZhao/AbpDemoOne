@@ -5,11 +5,12 @@
         var _$modal = $('#UserCreateModal');
         var _$form = _$modal.find('form');
 
+        
         _$form.validate({
             rules: {
                 Password: "required",
                 ConfirmPassword: {
-                    equalTo: "#Password"
+                    equalTo: "#password"
                 }
             }
         });
@@ -24,6 +25,12 @@
 
             deleteUser(userId, userName);
         });
+        $(".page-link").click(function () {
+            var _that = this;
+           
+            cuttentPage(_that);
+
+        })
 
         $('.edit-user').click(function (e) {
             var userId = $(this).attr("data-user-id");
@@ -43,9 +50,11 @@
         _$form.find('button[type="submit"]').click(function (e) {
             e.preventDefault();
 
-            //if (!_$form.valid()) {
-            //    return;
-            //}
+            if (!_$form.valid()) {
+                return;
+            }
+
+
 
             var user = _$form.serializeFormToObject(); //serializeFormToObject is defined in main.js
             user.roleNames = [];
@@ -87,6 +96,12 @@
                     }
                 }
             );
-        }
+        };
+        function cuttentPage(obj) {
+            var pageIndex = $(obj).text();
+            // alert(pageIndex);
+            $(obj).parent().addClass("active");
+            $(obj).parent().siblings().removeClass("active");
+        };
     });
 })();

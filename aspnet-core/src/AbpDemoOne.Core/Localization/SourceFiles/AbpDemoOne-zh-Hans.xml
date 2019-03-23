@@ -70,6 +70,8 @@
     <text name="DisplayName">显示名</text>
     <text name="Description">描述</text>
     <text name="IsStatic">是否内置</text>
+    <text name="Permissions">权限</text>
+    <text name="RoleDescription">角色描述</text>
 
     <text name="All">全部</text>
     <text name="Actived">启用</text>

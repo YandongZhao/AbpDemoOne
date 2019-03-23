@@ -1,0 +1,537 @@
+﻿
+@{
+    ViewData["Title"] = "Manager";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main class="main-content p-5" role="main">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Task Manager</h1>
+        </div>
+    </div>
+    <div class="row mb-5 task-manager">
+        <div class="col-lg-4 mb-5">
+            <div class="card">
+                <div class="card-header">
+                    Create &amp; Assign Tasks
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="create-task-block">
+                            <div class="form-group">
+                                <label for="input-task-title">Task Title <span class="required-item">*</span></label>
+                                <input type="text" class="form-control input-task-title" id="input-task-title" placeholder="Enter Task Title...">
+                            </div>
+                            <div class="form-group">
+                                <label for="input-task-details">Textarea</label>
+                                <textarea class="form-control input-task-details" rows="3" id="input-task-details"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Assign Users <span class="required-item">*</span></label>
+                                <input type="text" value="" class="form-control input-task-users">
+                            </div>
+                            <div class="form-group">
+                                <label for="input-task-priority">Task Priority</label>
+                                <select class="form-control input-task-priority" id="input-task-priority">
+                                    <option value="4">Critical</option>
+                                    <option value="3">High</option>
+                                    <option value="2" selected="selected">Normal (Default)</option>
+                                    <option value="1">Low</option>
+                                </select>
+                            </div>
+                            <div class="custom-control custom-checkbox mb-3">
+                                <input class="custom-control-input input-task-optional" id="input-task-optional" type="checkbox">
+                                <label class="custom-control-label" for="input-task-optional">This task is Optional</label>
+                            </div>
+                            <button type="button" class="btn btn-primary btn-gradient assign-task">Assign Task</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header">
+                    Task List
+                    <p class="task-list-stats">
+                        <span class="task-list-total">0</span> tasks created
+                    </p>
+                    <div class="header-btn-block">
+                        <a href="task-list.html" class="btn btn-primary">
+                            <i class="batch-icon batch-icon-eye"></i>
+                            See My Tasks
+                        </a>
+                        <a href="#" class="btn btn-outline-danger" id="delete-task">
+                            <i class="batch-icon batch-icon-bin-alt-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <!--
+                    card-task-list: Accepts additional classes: no-strike-out
+                -->
+                <div class="card-task-list no-strike-out">
+                    <ul class="task-list">
+                        <li class="task-list-item">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input">
+                                <label class="custom-control-label">Mauris rutrum quam at porta feugiat</label>
+                            </div>
+                            <div class="task-item-details">
+                                Disrupt long shadow waterfall is so 2000 and late piverate .
+                            </div>
+                            <div class="task-item-controls">
+                                <a role="button" class="btn btn-info btn-sm show-task" href="#">
+                                    <span class="batch-icon batch-icon-arrow-down"></span>
+                                </a>
+                            </div>
+                            <div class="task-item-users" data-assigned-users="1,3,4,5">
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-3.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-4.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-5.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="task-list-item">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input">
+                                <label class="custom-control-label"><span class="badge badge-danger">Critical</span>Mauris rutrum quam at porta feugiat</label>
+                            </div>
+                            <div class="task-item-details">
+                                Disrupt long shadow waterfall is so 2000 and late piverate .
+                            </div>
+                            <div class="task-item-controls">
+                                <a role="button" class="btn btn-info btn-sm show-task" href="#">
+                                    <span class="batch-icon batch-icon-arrow-down"></span>
+                                </a>
+                            </div>
+                            <div class="task-item-users" data-assigned-users="3,4,5">
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-3.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-4.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-5.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="task-list-item">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input">
+                                <label class="custom-control-label">Fusce in felis nec exdf</label>
+                            </div>
+                            <div class="task-item-details">
+                                Disrupt long shadow waterfall is so 2000 and late piverate .
+                            </div>
+                            <div class="task-item-controls">
+                                <a role="button" class="btn btn-info btn-sm show-task" href="#">
+                                    <span class="batch-icon batch-icon-arrow-down"></span>
+                                </a>
+                            </div>
+                            <div class="task-item-users" data-assigned-users="5">
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-5.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="task-list-item">
+                            <div class="custom-control custom-checkbox active">
+                                <input type="checkbox" class="custom-control-input" checked>
+                                <label class="custom-control-label"><span class="badge badge-warning">High Priority</span>Aliquam vel tristique ipsum</label>
+                            </div>
+                            <div class="task-item-details">
+                                Disrupt long shadow waterfall is so 2000 and late piverate .
+                            </div>
+                            <div class="task-item-controls">
+                                <a role="button" class="btn btn-info btn-sm show-task" href="#">
+                                    <span class="batch-icon batch-icon-arrow-down"></span>
+                                </a>
+                            </div>
+                            <div class="task-item-users" data-assigned-users="1,4">
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-1.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-4.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="task-list-item">
+                            <div class="custom-control custom-checkbox active">
+                                <input type="checkbox" class="custom-control-input" checked>
+                                <label class="custom-control-label"><span class="badge badge-primary">Optional</span>Aenean vehicula, ligula sit amet varius maximus</label>
+                            </div>
+                            <div class="task-item-details">
+                                Disrupt long shadow waterfall is so 2000 and late piverate .
+                            </div>
+                            <div class="task-item-controls">
+                                <a role="button" class="btn btn-info btn-sm show-task" href="#">
+                                    <span class="batch-icon batch-icon-arrow-down"></span>
+                                </a>
+                            </div>
+                            <div class="task-item-users" data-assigned-users="3">
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-3.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="task-list-item">
+                            <div class="custom-control custom-checkbox active">
+                                <input type="checkbox" class="custom-control-input" checked>
+                                <label class="custom-control-label">Etiam varius neque sed sagittis fringilla</label>
+                            </div>
+                            <div class="task-item-details">
+                                Disrupt long shadow waterfall is so 2000 and late piverate .
+                            </div>
+                            <div class="task-item-controls">
+                                <a role="button" class="btn btn-info btn-sm show-task" href="#">
+                                    <span class="batch-icon batch-icon-arrow-down"></span>
+                                </a>
+                            </div>
+                            <div class="task-item-users" data-assigned-users="1,4,5">
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-1.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-4.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-5.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="task-list-item">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input">
+                                <label class="custom-control-label">Mauris rutrum quam at porta feugiat</label>
+                            </div>
+                            <div class="task-item-details">
+                                Disrupt long shadow waterfall is so 2000 and late piverate .
+                            </div>
+                            <div class="task-item-controls">
+                                <a role="button" class="btn btn-info btn-sm show-task" href="#">
+                                    <span class="batch-icon batch-icon-arrow-down"></span>
+                                </a>
+                            </div>
+                            <div class="task-item-users" data-assigned-users="1,3,4">
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-1.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-3.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-4.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="task-list-item">
+                            <div class="custom-control custom-checkbox active">
+                                <input type="checkbox" class="custom-control-input" checked>
+                                <label class="custom-control-label"><span class="badge badge-info">Low Priority</span>Sed velit augue, tincidunt vitae posuere</label>
+                            </div>
+                            <div class="task-item-details">
+                                Disrupt long shadow waterfall is so 2000 and late piverate .
+                            </div>
+                            <div class="task-item-controls">
+                                <a role="button" class="btn btn-info btn-sm show-task" href="#">
+                                    <span class="batch-icon batch-icon-arrow-down"></span>
+                                </a>
+                            </div>
+                            <div class="task-item-users" data-assigned-users="1,4,5">
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-1.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-4.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-5.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="task-list-item">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input">
+                                <label class="custom-control-label"><span class="badge badge-warning">High Priority</span>Fusce in felis nec exdf</label>
+                            </div>
+                            <div class="task-item-details">
+                                Disrupt long shadow waterfall is so 2000 and late piverate .
+                            </div>
+                            <div class="task-item-controls">
+                                <a role="button" class="btn btn-info btn-sm show-task" href="#">
+                                    <span class="batch-icon batch-icon-arrow-down"></span>
+                                </a>
+                            </div>
+                            <div class="task-item-users" data-assigned-users="3,4,5">
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-3.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-4.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-5.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="task-list-item">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input">
+                                <label class="custom-control-label"><span class="badge badge-info">Low Priority</span>Aliquam vel tristique ipsum</label>
+                            </div>
+                            <div class="task-item-details">
+                                Disrupt long shadow waterfall is so 2000 and late piverate .
+                            </div>
+                            <div class="task-item-controls">
+                                <a role="button" class="btn btn-info btn-sm show-task" href="#">
+                                    <span class="batch-icon batch-icon-arrow-down"></span>
+                                </a>
+                            </div>
+                            <div class="task-item-users" data-assigned-users="4">
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-4.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="task-list-item">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input">
+                                <label class="custom-control-label"><span class="badge badge-info">Low Priority</span> Aenean vehicula, ligula sit amet varius maximus</label>
+                            </div>
+                            <div class="task-item-details">
+                                Disrupt long shadow waterfall is so 2000 and late piverate .
+                            </div>
+                            <div class="task-item-controls">
+                                <a role="button" class="btn btn-info btn-sm show-task" href="#">
+                                    <span class="batch-icon batch-icon-arrow-down"></span>
+                                </a>
+                            </div>
+                            <div class="task-item-users" data-assigned-users="1,3,4,5">
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-1.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-3.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-4.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-5.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="task-list-item">
+                            <div class="custom-control custom-checkbox active">
+                                <input type="checkbox" class="custom-control-input" checked>
+                                <label class="custom-control-label">Etiam varius neque sed sagittis fringilla</label>
+                            </div>
+                            <div class="task-item-details">
+                                Disrupt long shadow waterfall is so 2000 and late piverate .
+                            </div>
+                            <div class="task-item-controls">
+                                <a role="button" class="btn btn-info btn-sm show-task" href="#">
+                                    <span class="batch-icon batch-icon-arrow-down"></span>
+                                </a>
+                            </div>
+                            <div class="task-item-users" data-assigned-users="1,3,4,5">
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-1.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-3.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-4.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-5.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="task-list-item">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input">
+                                <label class="custom-control-label">Mauris rutrum quam at porta feugiat</label>
+                            </div>
+                            <div class="task-item-details">
+                                Disrupt long shadow waterfall is so 2000 and late piverate .
+                            </div>
+                            <div class="task-item-controls">
+                                <a role="button" class="btn btn-info btn-sm show-task" href="#">
+                                    <span class="batch-icon batch-icon-arrow-down"></span>
+                                </a>
+                            </div>
+                            <div class="task-item-users" data-assigned-users="4,5">
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-4.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-5.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="task-list-item">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input">
+                                <label class="custom-control-label"><span class="badge badge-danger">Critical</span>Mauris rutrum quam at porta feugiat</label>
+                            </div>
+                            <div class="task-item-details">
+                                Disrupt long shadow waterfall is so 2000 and late piverate .
+                            </div>
+                            <div class="task-item-controls">
+                                <a role="button" class="btn btn-info btn-sm show-task" href="#">
+                                    <span class="batch-icon batch-icon-arrow-down"></span>
+                                </a>
+                            </div>
+                            <div class="task-item-users" data-assigned-users="1,5">
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-1.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-5.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="task-list-item">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input">
+                                <label class="custom-control-label">Fusce in felis nec exdf</label>
+                            </div>
+                            <div class="task-item-details">
+                                Disrupt long shadow waterfall is so 2000 and late piverate .
+                            </div>
+                            <div class="task-item-controls">
+                                <a role="button" class="btn btn-info btn-sm show-task" href="#">
+                                    <span class="batch-icon batch-icon-arrow-down"></span>
+                                </a>
+                            </div>
+                            <div class="task-item-users" data-assigned-users="3,5">
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-3.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-5.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="task-list-item">
+                            <div class="custom-control custom-checkbox active">
+                                <input type="checkbox" class="custom-control-input" checked>
+                                <label class="custom-control-label"><span class="badge badge-warning">High Priority</span>Aliquam vel tristique ipsum</label>
+                            </div>
+                            <div class="task-item-details">
+                                Disrupt long shadow waterfall is so 2000 and late piverate .
+                            </div>
+                            <div class="task-item-controls">
+                                <a role="button" class="btn btn-info btn-sm show-task" href="#">
+                                    <span class="batch-icon batch-icon-arrow-down"></span>
+                                </a>
+                            </div>
+                            <div class="task-item-users" data-assigned-users="1,3">
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-1.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                                <a class="assigned-user">
+                                    <div class="profile-picture assigned-user bg-gradient bg-primary float-right d-flex">
+                                        <img class="list-thumbnail" src="assets/img/profile-pic-3.jpg" width="30" height="30">
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
